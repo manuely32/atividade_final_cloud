@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Importação de fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Importação de arquivos css -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/form.css">
+
+    <script src="scripts/login.js" type="text/javascript" defer></script>
+
+    <title>NovaVida</title>
+</head>
+
+<body>
+    <main>
+        <div class="content">
+            <p class="title">Faça seu login!</p>
+            <form class="form-login">
+                <div class="input-form">
+                    <label for="input-login">*E-mail</label>
+                    <input id="input-login" name="input-login" type="text" placeholder="Informe o e-mail cadastrado."
+                        required>
+                    <p class="error-text" id="helper-login">*Usuário inválido</p>
+                </div>
+                <div class="input-form">
+                    <label for="input-senha">*Senha</label>
+                    <input id="input-senha" name="input-senha" type="password" placeholder="Informe sua senha."
+                        required>
+                    <p class="error-text" id="helper-login-senha">*Campo Obrigatório</p>
+                </div>
+                <button type="button" onclick="login()" id="button-login" class="btn" disabled>Entrar</button>
+
+                <a href="cadastro.html">Cadastre-se</a>
+            </form>
+        </div>
+        <div id="dialog" class="dialog">
+            <span></span>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
