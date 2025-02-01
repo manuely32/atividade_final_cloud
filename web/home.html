@@ -40,7 +40,7 @@
     const user = JSON.parse(usuario)
 
     const imagem = document.getElementById('foto_perfil')
-    imagem.src = user.profile.foto_perfil || 'img/user3.png'
+    imagem.src = user.profile.profile_photo || 'img/user3.png'
 
     const corpo = document.getElementById('div-nome')
     const name = document.createElement('p')

@@ -18,7 +18,7 @@ main {
     align-items: center;
     background-color: rgba(252,228,236,.7);
     border-radius: 10px;
-    box-shadow: 0px 0px 5px #fce5ec;  
+    box-shadow: 0px 0px 5px #8c8c8c; 
 }
 
 .form-content {
@@ -85,6 +85,7 @@ main {
 .title {
     font-size: 20px;
     font-weight: bold;
+    color: #ED0E64;
 }
 
 #nome, #email, #senha, #confirma-senha, #input-login, #input-senha, #data_nascimento, #telefone, #foto {
