@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/form.css">
+
+    <script src="scripts/cadastro.js" type="text/javascript" defer></script>
+</head>
+
+<body>
+    <main>
+        <!-- Formulário de cadastro -->
+        <div class="content">
+            <p class="title">Cadastre-se</p>
+            <form class="form-content">
+                <div class="input-form">
+                    <label for="nome">*Nome completo</label>
+                    <input id="nome" name="nome" type="text" placeholder="Digite o nome completo" required>
+                    <p class="error-text" id="helper-nome">*Campo obrigatório</p>
+                </div>
+                <div class="input-form">
+                    <label for="email">*E-mail</label>
+                    <input id="email" name="email" type="email" placeholder="Digite seu e-mail" required>
+                    <p class="error-text" id="helper-email">*Campo obrigatório</p>
+                </div>
+
+                <div class="input-form">
+                    <label for="telefone">*Celular</label>
+                    <input id="telefone" name="telefone" type="text" placeholder="Digite seu e-mail" required>
+                    <p class="error-text" id="helper-telefone">*Campo obrigatório</p>
+                </div>
+                <div class="input-form">
+                    <label for="data_nascimento">*Data de nascimento</label>
+                    <input id="data_nascimento" name="data_nascimento" type="date" placeholder="Digite seu e-mail"
+                        required>
+                    <p class="error-text" id="helper-data-nascimento">*Campo obrigatório</p>
+                </div>
+
+                <div class="input-form">
+                    <label for="senha">*Senha</label>
+                    <input id="senha" name="senha" type="password" placeholder="Digite a senha" required>
+                    <p class="error-text" id="helper-senha">*Campo obrigatório</p>
+                </div>
+
+                <div class="input-form">
+                    <label for="confirma-senha">*Confirmar senha</label>
+                    <input id="confirma-senha" name="confirma-senha" type="password" placeholder="Confirme a senha"
+                        required>
+                    <p class="error-text" id="helper-confirma-senha">*Campo obrigatório</p>
+                </div>
+
+                <div class="input-form">
+                    <label for="foto">Foto perfil</label>
+                    <input id="foto" name="foto" type="file">
+                </div>
+
+                <button type="button" onclick="cadastro()" id="button-cadastro" class="btn" disabled>Cadastrar</button>
+            </form>
+
+            <a href="index.html">Já tenho cadastro!</a>
+
+        </div>
+
+        <div id="dialog" class="dialog">
+            <span></span>
+        </div>
+    </main>
+</body>
+
+</html>

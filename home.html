@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/home.css">
+
+    <script>
+        const usuario = localStorage.getItem("usuario")
+
+        if (!usuario) {
+            window.location.href = 'index.html'
+        }
+
+        function logoff() {
+            localStorage.removeItem('usuario')
+            window.location.href = 'index.html'
+        }
+
+    </script>
+</head>
+
+<body>
+    <main>
+        <div style="height: 200px; width: 200px; border-radius: 100px;">
+            <img style="height:100%; width: 100%; object-fit: cover; border-radius: 100px;" id="foto_perfil">
+        </div>
+
+        <div id="div-nome">
+        </div>
+        <button type="button" class="btn" onclick="logoff()">SAIR</button>
+    </main>
+</body>
+
+<script>
+    const user = JSON.parse(usuario)
+
+    const imagem = document.getElementById('foto_perfil')
+    imagem.src = user.profile.profile_photo || 'img/user3.png'
+
+    const corpo = document.getElementById('div-nome')
+    const name = document.createElement('p')
+    name.innerText = `${user.username}`
+
+    corpo.appendChild(name)
+</script>
+
+</html>
