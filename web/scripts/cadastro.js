@@ -143,7 +143,7 @@ async function cadastro() {
         msgDialog.classList.add(classlist)
         span.innerText = 'Cadastro efetuado com sucesso!!'
 
-        window.location.href = 'login.html'
+        window.location.href = 'index.html'
 
     } catch (error) {
         classlist = 'msg-error'
