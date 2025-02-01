@@ -4,7 +4,7 @@ main {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url(/img/pink-yellow-plain.jpg);
+    background-image: url(../img/pink-yellow-plain.jpg);
     background-size: cover;
     color:#212121;
     gap: 20px;
