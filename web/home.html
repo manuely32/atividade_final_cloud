@@ -25,14 +25,50 @@
 </head>
 
 <body>
-    <main>
-        <div style="height: 200px; width: 200px; border-radius: 100px;">
-            <img style="height:100%; width: 100%; object-fit: cover; border-radius: 100px;" id="foto_perfil">
-        </div>
+    <header>
+        <ul>
+            <li><a href="">Cadastrar</a></li>
+            <li><a href="">Ver todos</a></li>
+        </ul>
 
-        <div id="div-nome">
+        <div>
+            <img style="width: 40px; height:40px; border-radius: 110px;" id="foto_perfil">
+            <span id="span-nome"></span>
+            <button type="button" class="btn" onclick="logoff()">SAIR</button>
         </div>
-        <button type="button" class="btn" onclick="logoff()">SAIR</button>
+    </header>
+    <main>
+        <div style="margin: 50px;">
+            <ul style="display: flex; gap: 30px;">
+                <li>
+                    <a href="" style="display: flex; flex-direction: column; gap: 10px;">
+                        <img src="img/user3.png" alt="" style="width:130px; height: 200px; border-radius:12px;">
+                        <p>Titulo</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="" style="display: flex; flex-direction: column; gap: 10px;">
+                        <img src="img/user3.png" alt="" style="width:130px; height: 200px; border-radius:12px;">
+                        <p>Titulo</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="" style="display: flex; flex-direction: column; gap: 10px;">
+                        <img src="img/user3.png" alt="" style="width:130px; height: 200px; border-radius:12px;">
+                        <p>Titulo</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- <div style="margin: 30px; display: flex; flex-direction: column; gap: 30px;">
+            <div style="height: 200px; padding: 20px; background-color: aliceblue; border-radius: 10px;">
+                <img src="img/user3.png" alt="" style="width:100px;">
+            </div>
+
+            <div style="height: 200px; padding: 20px; background-color: aliceblue; border-radius: 10px;">
+                <img src="img/user3.png" alt="" style="width:100px;">
+            </div>
+        </div> -->
     </main>
 </body>
 
@@ -42,11 +78,8 @@
     const imagem = document.getElementById('foto_perfil')
     imagem.src = user.profile.profile_photo || 'img/user3.png'
 
-    const corpo = document.getElementById('div-nome')
-    const name = document.createElement('p')
-    name.innerText = `${user.username}`
-
-    corpo.appendChild(name)
+    const corpo = document.getElementById('span-nome')
+    corpo.innerText = `${user.username}`
 </script>
 
 </html>
