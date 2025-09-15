@@ -6,37 +6,45 @@
     &::before, &::after {
         box-sizing: border-box;
     }
+    color: #F5F5F5;
 }
 
-:root {
-    --color-primary: #ED0E64;
-    --color-secondary:#fce4ec;
-    --main-bg-color:#FFFAF0;
-    --text-msg-erro: #e65100;
+main {
+    height: 100vh;
+    background-color: #1C1C1C;
+    color: #F5F5F5;
 }
 
 a {
     text-decoration: none;
-    color: var(--color-primary);
+    color: #F5F5F5;
 }
 
-/* Estilização de botões */
-.btn {
-    border: 0px;
-    box-shadow: 0px 0px 1px 0px #8c8c8c;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: var(--color-primary);
-    color: white;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 500ms linear; 
-    width: fit-content;
-} 
 
-.btn:hover{
-    opacity: 0.5;  
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: #2A2A2A;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 30px 50px 30px 50px;
+    gap: 15px;
+    align-items: center;
+}
+
+.btn {
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 500ms linear; 
+    width: 100%;
+    background-color: #E50914;
+}
+
+p {
+    margin-bottom: 30px;
 }
 

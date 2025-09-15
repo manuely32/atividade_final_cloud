@@ -1,5 +1,5 @@
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('collection', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('collections', {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -21,7 +21,7 @@ module.exports = {
     type_id: {
       type: Sequelize.INTEGER,
       references: {
-        model: 'type',
+        model: 'types',
         key: 'id'
       },
       onUpdate: 'CASCADE',
@@ -54,5 +54,5 @@ module.exports = {
     }
   }),
 
-  down: (queryInterface) => queryInterface.dropTable('collection')
+  down: (queryInterface) => queryInterface.dropTable('collections')
 }

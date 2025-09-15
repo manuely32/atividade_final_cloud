@@ -1,24 +1,28 @@
 import { Sequelize, DataTypes } from 'sequelize'
-import Users from '../models/Users.js';
-import Profiles from '../models/Profiles.js';
-import Collection from '../models/Collection.js';
-import Types from '../models/Types.js';
+import Users from '../Models/Users.js';
+import Profiles from '../Models/Profiles.js';
+import Collections from '../Models/Collections.js';
+import Types from '../Models/Types.js';
 import registerAssociations from './associations.js';
 
 import databaseConfig from '../config/database.js'
+import Category from '../Models/Category.js';
 
 const connection = new Sequelize(databaseConfig)
 
 const usersModel = Users(connection, DataTypes);
 const profilesModel = Profiles(connection, DataTypes);
-const collectionModel = Collection(connection, DataTypes);
+const collectionsModel = Collections(connection, DataTypes);
 const typesModel = Types(connection, DataTypes);
+const categoryModel = Category(connection, DataTypes);
+
 
 const models = {
     Users: usersModel,
     Profiles: profilesModel,
-    Collection: collectionModel,
-    Types: typesModel
+    Collections: collectionsModel,
+    Types: typesModel,
+    Category: categoryModel
 };
 
 registerAssociations(models);

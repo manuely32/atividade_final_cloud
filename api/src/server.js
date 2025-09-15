@@ -1,9 +1,11 @@
 import express from 'express'
 import multer from 'multer'
 import UsersController from './Controllers/UsersController.js'
-import CollectionController from './Controllers/CollectionController.js'
+import CollectionsController from './Controllers/CollectionsController.js'
 import './database/index.js'
 import cors from 'cors'
+import TypesController from './Controllers/TypesController.js'
+import CategoryController from './Controllers/CategoryController.js'
 
 // Instanciando o express
 const app = express() //Gerenciamento de rotas
@@ -24,19 +26,27 @@ app.post('/register', upload.single('image'), UsersController.register)
 app.post('/login', UsersController.login)
 
 //especificando a rota de cadastro do filme/livro
-app.post('/collection', CollectionController.create)
+app.post('/collection', upload.single('image'), CollectionsController.create)
 
 //especificando a rota de listagem de filmes/livros
-app.get('/list_collection', CollectionController.list)
+app.get('/list_collection', CollectionsController.list)
 
 //especificando a rota de busca de um item de filmes/livros
-app.get('/list_collection', CollectionController.show)
+app.get('/list_collection/:id', CollectionsController.show)
+
+//especificando a rota para edição de um item de filmes/livros
+app.put('/collection', CollectionsController.update)
 
 //especificando a rota para exclusão de um item de filmes/livros
-app.put('/collection', CollectionController.update)
+app.delete('/collection', CollectionsController.delete)
 
-//especificando a rota para exclusão de um item de filmes/livros
-app.delete('/collection', CollectionController.delete)
+// rotas para a entidade types
+app.get('/types', TypesController.list)
+
+// rotas para a entidade category
+app.get('/category', CategoryController.list)
+
+
 
 
 //Inicia o servidor na porta 3000

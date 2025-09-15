@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt'
-import { models } from '../database/index.js';
+import { models, connection } from '../database/index.js'
+import { aws } from '../services/aws.js'
 
 
 class UsersController {
@@ -7,35 +8,45 @@ class UsersController {
 
         const { username, password, email, phone_number, birth_date } = req.body
         const imageBuffer = req.file.buffer
+        const fileName = req.file.originalname
+        let urlImage = null
 
         const passwordEncript = await bcrypt.hash(password, 10)
 
         try {
-            const usuario = await models.Users.findOne({
-                where: {
-                    email
+            await connection.transaction(async transaction => {
+                const usuario = await models.Users.findOne({
+                    where: {
+                        email
+                    },
+                    transaction
+                })
+
+                if (!usuario) {
+
+                    if (imageBuffer) {
+                        const url = await aws(fileName, imageBuffer, req.file.mimeType)
+                        urlImage = url
+                    }
+
+                    const { id } = await models.Users.create({
+                        username,
+                        email,
+                        password: passwordEncript,
+                        phone_number
+                    }, { transaction })
+
+                    await models.Profiles.create({
+                        user_id: id,
+                        birth_date,
+                        profile_photo: urlImage
+                    }, { transaction })
+
+                    return res.status(200).json({ msg: 'Cadastro realizado com sucesso!!.' })
+                } else {
+                    return res.status(400).json({ msg: 'Já existe um usuário cadastrado com esse e-mail.' })
                 }
             })
-
-            if (!usuario) {
-                const { id } = await models.Users.create({
-                    username,
-                    email,
-                    password: passwordEncript,
-                    phone_number
-                })
-
-                await models.Profiles.create({
-                    user_id: id,
-                    birth_date,
-                    profile_photo: imageBuffer
-                })
-
-                return res.status(200).json({ msg: 'Cadastro realizado com sucesso!!.' })
-            } else {
-                return res.status(400).json({ msg: 'Já existe um usuário cadastrado com esse e-mail.' })
-            }
-
         } catch (e) {
             console.log('erro', e.message)
             return res.status(401).json({ msg: e.message })
@@ -47,7 +58,7 @@ class UsersController {
 
         try {
             const user = await models.Users.findOne({
-                attributes: ['username', 'email', 'password', 'phone_number'],
+                attributes: ['id', 'username', 'email', 'password', 'phone_number'],
                 where: {
                     email
                 },
@@ -67,12 +78,6 @@ class UsersController {
             const result = await bcrypt.compare(password, user.dataValues.password)
 
             if (result) {
-
-                if (user.dataValues.profile.profile_photo) {
-                    const imageBase64 = user.dataValues.profile.profile_photo.toString('base64');
-                    const mimeType = 'image/png';
-                    user.dataValues.profile.profile_photo = `data:${mimeType};base64,${imageBase64}`
-                }
 
                 delete user.dataValues.password
 

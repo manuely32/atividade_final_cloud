@@ -1,0 +1,20 @@
+.detalhes {
+    height: 100%;
+    display: grid;
+    padding: 80px;  
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+}
+
+.img-detalhes {
+    width: 90%; 
+    height: 100%; 
+    align-self: end;
+
+}
+
+.div-detalhes{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

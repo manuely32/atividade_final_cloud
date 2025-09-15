@@ -3,10 +3,6 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-image: url(/img/pink-yellow-plain.jpg);
-    background-size: cover;
-    color:#212121;
     gap: 20px;
 }
 
@@ -16,21 +12,34 @@ main {
     gap: 50px;
     padding: 30px 50px 30px 50px;
     align-items: center;
-    background-color: rgba(252,228,236,.7);
+    background-color: #2A2A2A;
     border-radius: 10px;
-    box-shadow: 0px 0px 5px #8c8c8c; 
 }
 
 .form-content {
     display: grid;
-    grid-template-columns: auto auto;
     grid-template-areas: 
-        "nome email"
-        "celular data_nascimento"
+        "nome nome"
+        "email celular"
+        "data_nascimento foto"
         "senha confirma_senha"
-        "foto foto"
         "button_cadastro button_cadastro";
     
+    grid-template-columns: 1fr 1fr;
+    
+    align-items: center;
+    gap: 15px;  
+}
+
+.form-filme {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+        "titulo tipo"
+        "categoria ano"
+        "autor foto-capa"
+        "descricao descricao"
+        "button_cadastro_filme button_cadastro_filme";
     align-items: center;
     gap: 15px;  
 }
@@ -40,39 +49,25 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    width: 300px;
 }
 
-#nome {
-    grid-area: nome;
-  }
-  
-#email {
-    grid-area: email;
-  }
-  
-#celular {
-    grid-area: celular;
-  }
-  
-#data_nascimento {
-    grid-area: data_nascimento;
-  }
+#div-nome { grid-area: nome;}
+#email { grid-area: email;}  
+#celular { grid-area: celular;}  
+#data_nascimento { grid-area: data_nascimento;}
+#senha { grid-area: senha;}
+#confirmar_senha { grid-area: confirmar_senha;}
+#foto { grid-area: foto;}
+#button-cadastro {grid-area: button_cadastro;}
 
-#senha {
-    grid-area: senha;
-  }
-
-#confirmar_senha {
-    grid-area: confirmar_senha;
-}
-
-#foto {
-    grid-area: foto;
-  }
-
-#button_cadastro {
-    grid-area: button_cadastro;
-}
+#titulo {grid-area: titulo;}
+#categoria {grid-area: categoria;}
+#ano {grid-area: ano;}
+#autor {grid-area: autor;}
+#foto-capa {grid-area: foto-capa;}
+#div-descricao {grid-area: descricao;}
+#button_cadastro_filme {grid-area: button_cadastro_filme;}
 
 .form-content button {
     width: 100%;
@@ -85,24 +80,38 @@ main {
 .title {
     font-size: 20px;
     font-weight: bold;
-    color: #ED0E64;
 }
 
-#nome, #email, #senha, #confirma-senha, #input-login, #input-senha, #data_nascimento, #telefone, #foto {
+.input-campo {
     border: none;
     border-radius: 4px;
     height: 40px;
-    width: 300px;
+    width: 100%;
+    padding: 0.5rem;
+    box-shadow: 0px 0px 5px 0px #8c8c8c;
+    color:#212121;
+}
+
+.input-file {
+    border: none;
+    border-radius: 4px;
+    height: 40px;
+    width: 100%;
     padding: 0.5rem;
     box-shadow: 0px 0px 5px 0px #8c8c8c;
 }
 
-#button-cadastro:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+#descricao {
+    border: none;
+    border-radius: 4px;
+    height: 130px;
+    width: 100%;
+    padding: 0.5rem;
+    box-shadow: 0px 0px 5px 0px #8c8c8c;
+    color:#212121;
 }
 
-#button-login:disabled {
+button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
@@ -120,14 +129,17 @@ input:focus {
     display: none;
     font-size: .7rem;
     font-weight: 600;
-    color: var(--text-msg-erro);
+    color: #d32f2f;
 }
 
+option {
+     color:#212121;
+}
 
 input.error {
-    border: solid 2px var(--text-msg-erro);
+    border: solid 2px #d32f2f;
     background-color: #CCBBBB;
-    color: var(--text-msg-erro);
+    color: #d32f2f;
   }
 
 .visible {
@@ -138,7 +150,8 @@ input.error {
     display: flex;
     flex-direction:column;
     font-size: 10px;
-    gap:2px;
+    gap:4px;
+    width:100%;
 }
 
 input.correct {

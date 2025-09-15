@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/form.css">
+
+    <script src="components/header.js" type="text/javascript" defer></script>
+    <script src="scripts/cadastro_filmes.js" type="text/javascript" defer></script>
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <!-- Formulário de cadastro -->
+        <div class="card">
+            <p class="title">Cadastro</p>
+            <form class="form-filme">
+                <div class="input-form">
+                    <label for="titulo">*Título</label>
+                    <input class="input-campo" id="titulo" name="titulo" type="text" placeholder="Digite o título"
+                        required>
+                    <p class="error-text" id="helper-titulo">*Campo obrigatório</p>
+                </div>
+
+                <div class="input-form">
+                    <label for="tipo">*Tipo</label>
+                    <select class="input-campo" id="tipo" name="tipo">
+
+                    </select>
+                    <p class="error-text" id="helper-tipo">*Campo obrigatório</p>
+                </div>
+
+                <div class="input-form">
+                    <label for="categoria">*Categoria</label>
+                    <select class="input-campo" id="categoria" name="categoria" placeholder="Selecione...">
+
+                    </select>
+                    <p class="error-text" id="helper-categoria">*Campo obrigatório</p>
+                </div>
+
+                <div class="input-form">
+                    <label for="ano">*Ano de lançamento</label>
+                    <input class="input-campo" id="ano" name="ano" type="text" placeholder="Digite o ano de lançamento"
+                        required>
+                    <p class="error-text" id="helper-ano">*Campo obrigatório</p>
+                </div>
+
+                <div class="input-form">
+                    <label for="autor">*Autor/Diretor</label>
+                    <input class="input-campo" id="autor" name="autor" type="text"
+                        placeholder="Digite o ano de lançamento" required>
+                    <p class="error-text" id="helper-autor">*Campo obrigatório</p>
+                </div>
+
+                <div class="input-form">
+                    <label for="foto_capa">Foto de capa</label>
+                    <input class="input-file" id="foto_capa" name="foto_capa" type="file">
+                </div>
+
+                <div class="input-form" id="div-descricao">
+                    <label for="descricao">*Descrição</label>
+                    <textarea id="descricao" name="descricao" placeholder="descrição do filme"></textarea>
+                    <p class="error-text" id="helper-descricao">*Campo obrigatório</p>
+                </div>
+
+                <button type="button" onclick="cadastroFilmes()" id="button_cadastro_filme" class="btn"
+                    disabled>Cadastrar</button>
+            </form>
+        </div>
+
+        <div id="dialog" class="dialog">
+            <span></span>
+        </div>
+    </main>
+</body>
+
+</html>

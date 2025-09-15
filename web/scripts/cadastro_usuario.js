@@ -114,8 +114,6 @@ confirmaSenha.addEventListener('input', (e) => {
 })
 
 async function cadastro() {
-    console.log(fotoPerfil.value)
-
     const formData = new FormData();
 
     formData.append("image", fotoPerfil.files[0]);
