@@ -7,7 +7,6 @@ class CategoryController {
 
             return res.status(200).json({ categorias: categoria })
         } catch (error) {
-            console.log(error)
             return res.status(400).json({ msg: 'Erro ao obter as categorias' })
         }
 
