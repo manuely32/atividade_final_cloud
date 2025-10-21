@@ -141,7 +141,8 @@ async function cadastro() {
         msgDialog.classList.add(classlist)
         span.innerText = 'Cadastro efetuado com sucesso!!'
 
-        window.location.href = 'index.html'
+        window.location.href = `confirmacao.html?email=${email.value}`
+
 
     } catch (error) {
         classlist = 'msg-error'

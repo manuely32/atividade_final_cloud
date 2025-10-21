@@ -1,5 +1,7 @@
-const params = new URLSearchParams(window.location.search);
-const id = params.get('id');
+const params = new URLSearchParams(window.location.search)
+const id = params.get('id')
+const msgDialog = document.querySelector('#dialog')
+const span = msgDialog.getElementsByTagName('span')[0]
 
 async function getCollectionsShow(id) {
     try {
@@ -35,8 +37,16 @@ async function getCollectionsShow(id) {
         }
 
     } catch (error) {
-        console.log('error', error)
+        classlist = 'msg-error'
+        msgDialog.classList.add(classlist)
+        span.innerText = `${String(error).split(':')[1]}`
     }
+
+    //remove a mensagem de erro ou sucesso da tela depois de 5 segundos.
+    setTimeout(function () {
+        span.innerText = ''
+        msgDialog.classList.remove(classlist)
+    }, 5000);
 }
 
 getCollectionsShow(id)

@@ -3,19 +3,21 @@ import { aws } from '../services/aws.js';
 
 class CollectionsController {
     async list(req, res) {
+        // obterm o id do usuario que veio na requisição
         const user_id = req.query.user_id
-
+        // busca na base dados todos as coleções cadastradas pelo usuário
         const collectionList = await models.Collections.findAll({
             where: {
                 user_id
             }
         })
-
+        // retorna a lista de coleções para o front-end
         return res.status(200).json(collectionList)
     }
 
     async create(req, res) {
-        const { user, type, title, description, year, author, category } = req.body
+        // obtendo os dados da coleção enviados pelo front-end
+        const { usuarioId, tipo, titulo, descricao, ano, autor, categoria } = req.body
 
         const imageBuffer = req.file.buffer
         const fileName = req.file.originalname
@@ -24,26 +26,27 @@ class CollectionsController {
 
         try {
             if (imageBuffer) {
+                // caso tenha imagem é chamado o serviço aws s3 para armazenar a mesma, retornando somente a url para armazenar na base da dados
                 const url = await aws(fileName, imageBuffer, mimeType)
                 urlImage = url
             }
+            // criado uma nova coleção da base de dados
             const newCollection = await models.Collections.create({
-                user_id: user,
-                type_id: type,
-                title,
-                description,
-                release_year: year || null,
-                author,
-                category_id: category,
+                user_id: usuarioId,
+                type_id: tipo,
+                title: titulo,
+                description: descricao,
+                release_year: ano || null,
+                author: autor,
+                category_id: categoria,
                 image: urlImage
             })
-
+            //retornando os dados da coleção criada
             return res.status(200).json(newCollection)
         } catch (e) {
-            console.log(e)
+            // caso ocorra erro, é retornado uma mensagem de erro para o front-end
             return res.status(401).json({ msg: e.message })
         }
-
     }
 
     async show(req, res) {
@@ -74,15 +77,31 @@ class CollectionsController {
         }
     }
 
-    async update() {
+    async update(req, res) {
         const id = req.params
-        const { title, description, image } = req.body
+        const { usuarioId, tipo, titulo, descricao, ano, autor, categoria } = req.body
+
+        const imageBuffer = req.file.buffer
+        const fileName = req.file.originalname
+        const mimeType = req.file.mimeType
+        let urlImage = null
 
         try {
+            if (imageBuffer) {
+                // caso tenha imagem é chamado o serviço aws s3 para armazenar a mesma, retornando somente a url para armazenar na base da dados
+                const url = await aws(fileName, imageBuffer, mimeType)
+                urlImage = url
+            }
+
             const collection = await models.Collections.update({
-                title,
-                description,
-                image
+                user_id: usuarioId,
+                type_id: tipo,
+                title: titulo,
+                description: descricao,
+                release_year: ano || null,
+                author: autor,
+                category_id: categoria,
+                image: urlImage
             }, {
                 where: {
                     id
@@ -96,7 +115,20 @@ class CollectionsController {
 
     }
 
-    async delete() {
+    async delete(req, res) {
+        const { id } = req.params
+
+        try {
+            await models.Collections.destroy({
+                where: {
+                    id
+                }
+            })
+
+            return res.status(200)
+        } catch (e) {
+            return res.status(401).json({ msg: e.message })
+        }
 
     }
 }

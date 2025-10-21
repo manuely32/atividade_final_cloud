@@ -22,11 +22,13 @@ app.use(express.json())
 //especificando a rota de cadastro do usuário
 app.post('/register', upload.single('image'), UsersController.register)
 
+app.post('/confirmation_user', UsersController.confirmationUSer)
+
 //especificando a rota de login do usuário
 app.post('/login', UsersController.login)
 
-//especificando a rota de cadastro do filme/livro
-app.post('/collection', upload.single('image'), CollectionsController.create)
+//especificando a rota de cadastro da coleção
+app.post('/collection', upload.single('imagem'), CollectionsController.create)
 
 //especificando a rota de listagem de filmes/livros
 app.get('/list_collection', CollectionsController.list)

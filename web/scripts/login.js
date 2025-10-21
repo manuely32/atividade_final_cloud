@@ -80,14 +80,16 @@ async function login() {
             body: JSON.stringify(dados) // Converte os dados para JSON
         });
 
-        const dadosRetornado = await response.json();
+        const dadosRetornado = await response.json()
+
+        console.log(dadosRetornado)
 
         if (!response.ok) {
             throw new Error(dadosRetornado.msg);
         }
 
         // Armazena os dados do usuário no localStorage
-        localStorage.setItem("usuario", JSON.stringify(dadosRetornado.usuario))
+        localStorage.setItem("usuario", JSON.stringify(dadosRetornado.data.usuario))
 
         // Encaminha para tela home
         window.location.href = 'home.html'

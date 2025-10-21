@@ -9,7 +9,7 @@ export default (sequelize, DataTypes) => {
                 type: DataTypes.STRING,
                 allowNull: false
             },
-            password: {
+            cognito_user_id: {
                 type: DataTypes.STRING,
                 allowNull: false
             },

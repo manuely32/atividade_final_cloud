@@ -1,4 +1,6 @@
 const userid = JSON.parse(usuario)
+const msgDialog = document.querySelector('#dialog')
+const span = msgDialog.getElementsByTagName('span')[0]
 
 async function getCollections() {
     try {
@@ -31,10 +33,17 @@ async function getCollections() {
             `
         }
 
-        console.log(resultado)
     } catch (error) {
-        console.log('error', error)
+        classlist = 'msg-error'
+        msgDialog.classList.add(classlist)
+        span.innerText = `${String(error).split(':')[1]}`
     }
+
+    //remove a mensagem de erro ou sucesso da tela depois de 5 segundos.
+    setTimeout(function () {
+        span.innerText = ''
+        msgDialog.classList.remove(classlist)
+    }, 5000);
 }
 
 getCollections()

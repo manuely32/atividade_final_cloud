@@ -19,22 +19,22 @@ async function buscarTipos() {
     try {
         const response = await fetch('http://localhost:3000/types', {
             method: 'GET'
-        });
+        })
 
         const resp = await response.json()
 
         if (!response.ok) {
-            throw new Error(resp.msg);
+            throw new Error(resp.msg)
         }
 
         const select = document.getElementById('tipo')
 
         resp.tipos.forEach((item, index) => {
-            const option = document.createElement("option");
-            option.value = item.id;   // pode ser o próprio item se preferir
+            const option = document.createElement("option")
+            option.value = item.id
             option.textContent = item.description;
-            select.appendChild(option);
-        });
+            select.appendChild(option)
+        })
 
     } catch (error) {
         console.log(error)
@@ -47,22 +47,22 @@ async function buscarCategorias() {
     try {
         const response = await fetch('http://localhost:3000/category', {
             method: 'GET'
-        });
+        })
 
         const resp = await response.json()
 
         if (!response.ok) {
-            throw new Error(resp.msg);
+            throw new Error(resp.msg)
         }
 
         const selectCategoria = document.getElementById('categoria')
 
         resp.categorias.forEach((item, index) => {
-            const option = document.createElement("option");
-            option.value = item.id;   // pode ser o próprio item se preferir
-            option.textContent = item.description;
-            selectCategoria.appendChild(option);
-        });
+            const option = document.createElement("option")
+            option.value = item.id
+            option.textContent = item.description
+            selectCategoria.appendChild(option)
+        })
 
     } catch (error) {
         console.log(error)
@@ -74,7 +74,6 @@ buscarCategorias()
 
 function habilitarDesabilitarBotao() {
     let inputError = document.getElementsByClassName('error')
-    console.log(inputError)
 
     if (titulo.value !== "" && descricao.value !== "" && ano.value !== "" && autor.value !== "" && inputError.length === 0) {
         button_filme.disabled = false
@@ -168,14 +167,14 @@ descricao.addEventListener('input', (e) => {
 async function cadastroFilmes() {
     const formData = new FormData();
 
-    formData.append("image", fotoCapa.files[0]);
-    formData.append("title", titulo.value);
-    formData.append("type", tipo.value);
-    formData.append("category", categoria.value);
-    formData.append("author", autor.value);
-    formData.append("description", descricao.value);
-    formData.append("year", ano.value);
-    formData.append("user", userID.id)
+    formData.append("imagem", fotoCapa.files[0]);
+    formData.append("titulo", titulo.value);
+    formData.append("tipo", tipo.value);
+    formData.append("categoria", categoria.value);
+    formData.append("autor", autor.value);
+    formData.append("descricao", descricao.value);
+    formData.append("ano", ano.value);
+    formData.append("usuarioId", userID.id)
 
     let classlist
 
