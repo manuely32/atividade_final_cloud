@@ -57,9 +57,9 @@ Abra o arquivo frontend/index.html no navegador ou use uma extensão como Live S
 
 | Método | Rota      | Descrição              |
 | :----: | :-------- | :--------------------- |
-|   GET  | `/list_collection` | Lista todos os livros/filmes  |
+|   GET  | `/collection` | Lista todos os livros/filmes  |
 |  POST  | `/collection` | Cadastra um novo livro |
-|  POST  | `/register` | Cadastra um usuário  |
+|  POST  | `/user` | Cadastra um usuário  |
 |  POST  | `/login` | Realiza o login do usuário |
 
 ### 🧠 Funcionalidades
