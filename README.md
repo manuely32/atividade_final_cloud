@@ -55,9 +55,15 @@ O servidor estará rodando em:
 
 Abra o arquivo frontend/index.html no navegador ou use uma extensão como Live Server (VS Code).
 
+| Método | Rota      | Descrição              |
+| :----: | :-------- | :--------------------- |
+|   GET  | `/list_collection` | Lista todos os livros/filmes  |
+|  POST  | `/collection` | Cadastra um novo livro |
+|  POST  | `/register` | Cadastra um usuário  |
+|  POST  | `/login` | Realiza o login do usuário |
+
 ### 🧠 Funcionalidades
-- Cadastro, listagem e exclusão de livros e filmes
-- Interface simples e responsiva em HTML/CSS
+- Cadastro, listagem de livros e filmes
 - Comunicação entre frontend e backend via API REST
 - Código organizado em rotas, controladores e modelos
 
