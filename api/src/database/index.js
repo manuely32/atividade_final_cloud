@@ -1,4 +1,5 @@
 import { Sequelize, DataTypes } from 'sequelize'
+
 import Users from '../Models/Users.js';
 import Profiles from '../Models/Profiles.js';
 import Collections from '../Models/Collections.js';
@@ -16,14 +17,13 @@ const collectionsModel = Collections(connection, DataTypes);
 const typesModel = Types(connection, DataTypes);
 const categoryModel = Category(connection, DataTypes);
 
-
 const models = {
     Users: usersModel,
     Profiles: profilesModel,
     Collections: collectionsModel,
     Types: typesModel,
     Category: categoryModel
-};
+}
 
 registerAssociations(models);
 

@@ -2,6 +2,7 @@ import express from 'express'
 import multer from 'multer'
 import UsersController from './Controllers/UsersController.js'
 import CollectionsController from './Controllers/CollectionsController.js'
+
 import './database/index.js'
 import cors from 'cors'
 import TypesController from './Controllers/TypesController.js'
