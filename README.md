@@ -63,7 +63,7 @@ Abra o arquivo frontend/index.html no navegador ou use uma extensão como Live S
 |  POST  | `/login` | Realiza o login do usuário |
 
 ### 🧠 Funcionalidades
-- Cadastro, listagem de livros e filmes
+- Cadastro, listagem, edição de exclusão de livros e filmes
 - Comunicação entre frontend e backend via API REST
 - Código organizado em rotas, controladores e modelos
 
