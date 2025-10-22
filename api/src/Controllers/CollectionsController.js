@@ -78,12 +78,14 @@ class CollectionsController {
     }
 
     async update(req, res) {
-        const id = req.params
+        const { id } = req.params
         const { usuarioId, tipo, titulo, descricao, ano, autor, categoria } = req.body
 
-        const imageBuffer = req.file.buffer
-        const fileName = req.file.originalname
-        const mimeType = req.file.mimeType
+        console.log(id, usuarioId, tipo, titulo)
+
+        const imageBuffer = req.file?.buffer
+        const fileName = req.file?.originalname
+        const mimeType = req.file?.mimeType
         let urlImage = null
 
         try {
@@ -112,7 +114,6 @@ class CollectionsController {
         } catch (e) {
             return res.status(401).json({ msg: e.message })
         }
-
     }
 
     async delete(req, res) {
@@ -125,7 +126,7 @@ class CollectionsController {
                 }
             })
 
-            return res.status(200)
+            return res.status(200).json('ok')
         } catch (e) {
             return res.status(401).json({ msg: e.message })
         }

@@ -3,8 +3,10 @@ const msgDialog = document.querySelector('#dialog')
 const span = msgDialog.getElementsByTagName('span')[0]
 
 async function getCollections() {
+    let classlist
+
     try {
-        const response = await fetch(`http://localhost:3000/list_collection?user_id=${userid.id}`, {
+        const response = await fetch(`http://localhost:3000/collection?user_id=${userid.id}`, {
             method: 'GET',
 
         });
@@ -22,7 +24,6 @@ async function getCollections() {
                         <img src="${resultado[i].image}" alt="" style="width:130px; height: 200px; border-radius:12px; object-fit: cover; "
                         <p>${resultado[i].title}</p>
                     </a>
-                
                 `;
                 ul.appendChild(li);
             }

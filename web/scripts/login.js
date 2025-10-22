@@ -82,8 +82,6 @@ async function login() {
 
         const dadosRetornado = await response.json()
 
-        console.log(dadosRetornado)
-
         if (!response.ok) {
             throw new Error(dadosRetornado.msg);
         }

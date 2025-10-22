@@ -11,7 +11,7 @@ const errorMessages = {
 }
 
 class UsersController {
-    async register(req, res) {
+    async create(req, res) {
         const cognito = new CognitoIdentityServiceProvider({ region: "us-east-2" });
 
         // obtendo os dados enviados pelo front-end

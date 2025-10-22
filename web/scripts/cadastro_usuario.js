@@ -17,7 +17,6 @@ const span = msgDialog.getElementsByTagName('span')[0]
 
 function habilitarDesabilitarBotao() {
     let inputError = document.getElementsByClassName('error')
-    console.log(inputError)
 
     if (nome.value !== "" && email.value !== "" && senha.value !== "" && confirmaSenha.value !== "" && inputError.length === 0) {
         button.disabled = false

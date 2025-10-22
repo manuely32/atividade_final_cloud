@@ -16,3 +16,27 @@
     flex-direction: column;
     gap: 15px;
 }
+
+.div-botoes{
+    display: flex;
+    gap: 10px;
+}
+
+.msg-success {
+    background-color: #206620;
+    font-size: 14px;
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+    border: 0px;
+}
+
+.msg-error {
+    background-color: #d32f2f;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 0px;
+    color: white;
+    height: auto;
+}

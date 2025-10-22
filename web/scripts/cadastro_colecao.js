@@ -1,10 +1,13 @@
+const params = new URLSearchParams(window.location.search)
+const id = params.get('id')
+
 const titulo = document.getElementById('titulo')
 const helperTitulo = document.getElementById('helper-titulo')
 const tipo = document.getElementById('tipo')
 const helperTipo = document.getElementById('helper-tipo')
 const descricao = document.getElementById('descricao')
 const helperDescricao = document.getElementById('helper-descricao')
-const button_filme = document.getElementById('button_cadastro_filme')
+const button_filme = document.getElementById('button_cadastro_colecao')
 const fotoCapa = document.getElementById('foto_capa')
 const msgDialog = document.querySelector('#dialog')
 const span = msgDialog.getElementsByTagName('span')[0]
@@ -164,7 +167,7 @@ descricao.addEventListener('input', (e) => {
 
 })
 
-async function cadastroFilmes() {
+async function cadastroColecao() {
     const formData = new FormData();
 
     formData.append("imagem", fotoCapa.files[0]);
@@ -185,6 +188,8 @@ async function cadastroFilmes() {
         });
 
         const resp = await response.json()
+        console.log(resp)
+        console.log(response)
 
         if (!response.ok) {
             throw new Error(resp.msg);
@@ -207,4 +212,97 @@ async function cadastroFilmes() {
         span.innerText = ''
         msgDialog.classList.remove(classlist)
     }, 5000);
+}
+
+async function prepararEdicaoColecao() {
+    console.log('prepara', id)
+    try {
+        const response = await fetch(`http://localhost:3000/collection/${id}`, {
+            method: 'GET'
+        });
+
+        const resultado = await response.json();
+
+        if (resultado) {
+
+            // fotoCapa.value = resultado.image
+
+            titulo.value = resultado.title
+
+            tipo.value = resultado.type.id
+
+            categoria.value = resultado.category.id
+
+            ano.value = resultado.release_year
+            autor.value = resultado.author
+            descricao.value = resultado.description
+
+            button_filme.textContent = 'Editar'
+            button_filme.addEventListener('click', () => EditarColecao(id))
+
+        }
+
+    } catch (e) {
+        console.log(e)
+        classlist = 'msg-error'
+        msgDialog.classList.add(classlist)
+        span.innerText = `${String(e).split(':')[1]}`
+
+        //remove a mensagem de erro depois de 5 segundos.
+        setTimeout(function () {
+            span.innerText = ''
+            msgDialog.classList.remove(classlist)
+        }, 5000);
+    }
+}
+
+async function EditarColecao(id) {
+    const formData = new FormData();
+
+    formData.append("imagem", fotoCapa.files[0]);
+    formData.append("titulo", titulo.value);
+    formData.append("tipo", tipo.value);
+    formData.append("categoria", categoria.value);
+    formData.append("autor", autor.value);
+    formData.append("descricao", descricao.value);
+    formData.append("ano", ano.value);
+    formData.append("usuarioId", userID.id)
+
+    let classlist
+
+    try {
+        const response = await fetch(`http://localhost:3000/collection/${id}`, {
+            method: 'PUT',
+            body: formData
+        });
+
+        const resp = await response.json()
+
+        if (!response.ok) {
+            throw new Error(resp.msg);
+        }
+
+        classlist = 'msg-success'
+        msgDialog.classList.add(classlist)
+        span.innerText = 'Atualização efetuado com sucesso!!'
+
+        window.location.href = `detalhe.html?id=${id}`
+
+    } catch (error) {
+        classlist = 'msg-error'
+        msgDialog.classList.add(classlist)
+        span.innerText = `${String(error).split(':')[1]}`
+    }
+
+    //remove a mensagem de erro ou sucesso da tela depois de 5 segundos.
+    setTimeout(function () {
+        span.innerText = ''
+        msgDialog.classList.remove(classlist)
+    }, 5000);
+}
+
+if (id) {
+    prepararEdicaoColecao(id)
+} else {
+    button_filme.addEventListener('click', () => cadastroColecao())
 }

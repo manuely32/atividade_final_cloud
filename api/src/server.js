@@ -20,7 +20,7 @@ app.use(cors())
 app.use(express.json())
 
 //especificando a rota de cadastro do usuário
-app.post('/register', upload.single('image'), UsersController.register)
+app.post('/user', upload.single('image'), UsersController.create)
 
 app.post('/confirmation_user', UsersController.confirmationUSer)
 
@@ -31,16 +31,16 @@ app.post('/login', UsersController.login)
 app.post('/collection', upload.single('imagem'), CollectionsController.create)
 
 //especificando a rota de listagem de filmes/livros
-app.get('/list_collection', CollectionsController.list)
+app.get('/collection', CollectionsController.list)
 
 //especificando a rota de busca de um item de filmes/livros
-app.get('/list_collection/:id', CollectionsController.show)
+app.get('/collection/:id', CollectionsController.show)
 
 //especificando a rota para edição de um item de filmes/livros
-app.put('/collection', CollectionsController.update)
+app.put('/collection/:id', upload.single('imagem'), CollectionsController.update)
 
 //especificando a rota para exclusão de um item de filmes/livros
-app.delete('/collection', CollectionsController.delete)
+app.delete('/collection/:id', CollectionsController.delete)
 
 // rotas para a entidade types
 app.get('/types', TypesController.list)

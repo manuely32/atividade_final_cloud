@@ -8,7 +8,7 @@ const header = document.querySelector("header")
 
 header.innerHTML = `
             <ul>
-                <li><a href="cadastro_filme.html">Cadastrar Novo</a></li>
+                <li><a href="cadastro_colecao.html">Cadastrar</a></li>
                 <li><a href="home.html">Ver todos</a></li>
             </ul>
 

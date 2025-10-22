@@ -39,7 +39,7 @@ main {
         "categoria ano"
         "autor foto-capa"
         "descricao descricao"
-        "button_cadastro_filme button_cadastro_filme";
+        "button_cadastro_colecao button_cadastro_colecao";
     align-items: center;
     gap: 15px;  
 }
@@ -67,7 +67,7 @@ main {
 #autor {grid-area: autor;}
 #foto-capa {grid-area: foto-capa;}
 #div-descricao {grid-area: descricao;}
-#button_cadastro_filme {grid-area: button_cadastro_filme;}
+#button_cadastro_colecao {grid-area: button_cadastro_colecao;}
 
 .form-content button {
     width: 100%;
