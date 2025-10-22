@@ -40,28 +40,28 @@ cd nome-do-repositorio
 cd api
 npm install
 ```
-4️⃣ Criar o arquivo .env
+### 4️⃣ Criar o arquivo .env
 
 Crie um arquivo chamado .env dentro da pasta api/ conforme o arquivo .env_exemplo contido no projeto e adicione as variáveis necessárias.
 
-5️⃣ Iniciar o servidor
+### 5️⃣ Iniciar o servidor
 ```bash
 npm run start ou yarn start
 ```
 O servidor estará rodando em:
 👉 http://localhost:3000
 
-6️⃣ Abrir o frontend
+### 6️⃣ Abrir o frontend
 
 Abra o arquivo frontend/index.html no navegador ou use uma extensão como Live Server (VS Code).
 
-🧠 Funcionalidades
+### 🧠 Funcionalidades
 - Cadastro, listagem e exclusão de livros e filmes
 - Interface simples e responsiva em HTML/CSS
 - Comunicação entre frontend e backend via API REST
 - Código organizado em rotas, controladores e modelos
 
-👩‍💻 Autor(a)
+### 👩‍💻 Autor(a)
 
 Manuely Barbosa Guedes
 📧 manuelyufpa@gmail.com
